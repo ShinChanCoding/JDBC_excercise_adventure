@@ -24,7 +24,7 @@ public class AdventureController {
 		if(items != null && items.size() != 0) {
 			view.findBag(items);
 		}else {
-			Exception errorObject = new Exception("Todo데이터가 존재하지 않습니다.");
+			Exception errorObject = new Exception("아이템이 존재하지 않습니다.");
 			view.errorPage(errorObject);
 		}
 	}
@@ -46,6 +46,7 @@ public class AdventureController {
 	
 	public void saveItem() {
 		try {
+			
 			System.out.print("id: ");
 			int id = Integer.parseInt(bf.readLine());
 			System.out.print("아이템 이름(String): ");
@@ -68,18 +69,56 @@ public class AdventureController {
 	}
 	public void deleteItem() {
 		try {
-			System.out.print("삭제할 물건의 id: ");
+			System.out.print("삭제할 아이템의 id: ");
 			int id = Integer.parseInt(bf.readLine());
 			int success = dao.deleteItem(id);
 			if(success == 1) {
 				view.deleteItem(success);
 			}else {
-				Exception errorObject = new Exception("Todo데이터가 삭제되지 않았습니다.");
+				Exception errorObject = new Exception("아이템이 삭제되지 않았습니다.");
 				view.errorPage(errorObject);
 			}
-			bf.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public int sellItem() {
+		int money = 0;
+		try {
+			System.out.print("판매할 아이템의 id: ");
+			int id = Integer.parseInt(bf.readLine());
+			int[] success = dao.sellItem(id);
+			if(success[1] == 1) {
+				view.sellItem();
+				money += success[0];
+			}else {
+				Exception errorObject = new Exception("아이템이 판매되지 않았습니다.");
+				view.errorPage(errorObject);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return money;
+	}
+	public int allPower() {
+			int success = dao.allPower();
+			if(success != 0) {
+				view.allPower(success);
+			}else {
+				Exception errorObject = new Exception("파워가 조회되지 않았습니다.");
+				view.errorPage(errorObject);
+			}
+			return success;
+	}
+
+	public int savePrincess(int totalMoney, int totalPower) {
+		int result = dao.savePrincess(totalMoney, totalPower);
+		if(result == 1) {
+			view.savePrincess();
+		}else {
+			Exception errorObject = new Exception("공주를 구하기엔 아직 당신은 부족하다....");
+			view.errorPage(errorObject);
+		}
+		return result;
 	}
 }
