@@ -1,22 +1,22 @@
 package dev.exercise.model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Adventure {
-	
+
 	private int id;
 	private String item;
 	private int item_weight;
 	private int item_price;
-	private Date input_time;
+	private LocalDateTime input_time;
 	
-	public Adventure(int id, String item, int item_weight, int item_price, Date input_time) {
+	public Adventure(int id, String item, int item_weight, int item_price, LocalDateTime dueDate) {
 		super();
 		this.id = id;
 		this.item = item;
 		this.item_weight = item_weight;
 		this.item_price = item_price;
-		this.input_time = input_time;
+		this.input_time = dueDate;
 	}
 
 	public int getId() {
@@ -51,16 +51,14 @@ public class Adventure {
 		this.item_price = item_price;
 	}
 
-	public Date getInput_time() {
+	public LocalDateTime getInput_time() {
 		return input_time;
 	}
 
-	public void setInput_time(Date input_time) {
-		this.input_time = input_time;
-	}
-	
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Adventure [id=" + id + ", item=" + item + ", item_weight=" + item_weight + ", item_price=" + item_price
+				+ ", input_time=" + input_time + "]";
+	}
 }
