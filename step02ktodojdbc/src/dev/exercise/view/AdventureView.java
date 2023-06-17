@@ -6,49 +6,49 @@ import java.util.List;
 import dev.exercise.model.Adventure;
 
 public class AdventureView {
-	// 1. °¡¹æ Á¶È¸ °á°ú¸¦ Æ÷¸ÅÆÃ
+	// 1. ê°€ë°© ì¡°íšŒ ê²°ê³¼ë¥¼ í¬ë§¤íŒ…
 	public void findBag(List<Adventure> items) {
 		for (Adventure item : items) {
-			System.out.println(String.format("%d ¹ø ¾ÆÀÌÅÛÀº %sÀÔ´Ï´Ù.¹«°Ô´Â %dÀÌ°í °¡°İÀº %dÀÌ¸ç °ø°İ·Â %dÀÔ´Ï´Ù.", item.getId(), item.getItem(),
+			System.out.println(String.format("%d ë²ˆ ì•„ì´í…œì€ %sì…ë‹ˆë‹¤.ë¬´ê²ŒëŠ” %dì´ê³  ê°€ê²©ì€ %dì´ë©° ê³µê²©ë ¥ %dì…ë‹ˆë‹¤.", item.getId(), item.getItem(),
 			item.getItem_weight(), item.getItem_price(), item.getItem_power()));
 			
 			LocalDateTime localDateTime = item.getInput_time();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd E HH:mm");
-			System.out.println("¾ÆÀÌÅÛÀ» Ãß°¡ÇÑ ½Ã°£Àº " + localDateTime.format(formatter) + "ÀÔ´Ï´Ù.");
+			System.out.println("ì•„ì´í…œì„ ì œì‘í•œ ì‹œê°„ì€ " + localDateTime.format(formatter) + "ì…ë‹ˆë‹¤.");
 			System.out.println();
 		}
 	}
 
 	public void findItemById(Adventure item) {
-		System.out.println(String.format("%d ¹ø ¾ÆÀÌÅÛÀº %sÀÔ´Ï´Ù.¹«°Ô´Â %dÀÌ°í °¡°İÀº %dÀÌ¸ç °ø°İ·ÂÀº %dÀÔ´Ï´Ù.", item.getId(), item.getItem(),
+		System.out.println(String.format("%d ë²ˆ ì•„ì´í…œì€ %sì…ë‹ˆë‹¤.ë¬´ê²ŒëŠ” %dì´ê³  ê°€ê²©ì€ %dì´ë©° ê³µê²©ë ¥ì€ %dì…ë‹ˆë‹¤.", item.getId(), item.getItem(),
 		item.getItem_weight(), item.getItem_price(), item.getItem_power()));
 		
 		LocalDateTime localDateTime = item.getInput_time();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd E HH:mm");
-		System.out.println("¾ÆÀÌÅÛÀ» Ãß°¡ÇÑ ½Ã°£Àº " + localDateTime.format(formatter) + "ÀÔ´Ï´Ù.");
+		System.out.println("ì•„ì´í…œì„ ì¶”ê°€í•œ ì‹œê°„ì€ " + localDateTime.format(formatter) + "ì…ë‹ˆë‹¤.");
 		System.out.println();
 	}
 
 	public void addItem() {
-		System.out.println("¾ÆÀÌÅÛÀÌ Ãß°¡ µÇ¾ú½À´Ï´Ù.");
+		System.out.println("ì•„ì´í…œì´ ì¶”ê°€ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	}
 	public void sellItem() {
-		System.out.println("¾ÆÀÌÅÛÀÌ ÆÇ¸Å µÇ¾ú½À´Ï´Ù.");
+		System.out.println("ì•„ì´í…œì´ íŒë§¤ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	}
 	public void errorPage(Exception error) {
-		System.out.println("¹®Á¦°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù." + error.getMessage());
+		System.out.println("ë¬¸ì œê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤." + error.getMessage());
 	}
 
 	public void deleteItem(int affectedRows) {
-		System.out.println(affectedRows + "°³ÀÇ ¾ÆÀÌÅÛ(row)ÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù. ");
+		System.out.println(affectedRows + "ê°œì˜ ì•„ì´í…œ(row)ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤. ");
 	}
 
 	public void allPower(int success) {
 		// TODO Auto-generated method stub
-		System.out.printf("¸ğµç power´Â %dÀÔ´Ï´Ù\n",success);
+		System.out.printf("ëª¨ë“  powerëŠ” %dì…ë‹ˆë‹¤\n",success);
 	}
 
 	public void savePrincess() {
-		System.out.println("ÀÌ¾æÈ£!!! °øÁÖ¸¦ ±¸Çß´Ù!!!!!");
+		System.out.println("ì´ì–í˜¸!!! ê³µì£¼ë¥¼ êµ¬í–ˆë‹¤!!!!!");
 	}
 }
